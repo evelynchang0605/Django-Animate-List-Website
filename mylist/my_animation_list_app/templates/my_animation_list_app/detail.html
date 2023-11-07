@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{{ animate.title_text }}</title>
+    </head>
+    <body>
+        <h1>{{ animate.title_text }}</h1>
+        <p>Zone: {{ animate.zone_text }}</p>
+        <p>Published Date: {{ animate.pub_date }}</p>
+
+        <!-- 顯示動畫圖片-->
+        <img src="{{ animate.animate_photo.url }}" width="300" alt="{{ animate.title_text }}">
+        <br/>
+        <textarea name="test" rows="8" cols="80">Description: {{ animate.animate_description }} </textarea>
+        <br/>
+        <a href="{% url 'my_animation_list_app:index' %}">Back to Animate List</a>
+
+        <form action="{% url 'my_animation_list_app:vote' animate.id %}" method="post">
+        {% csrf_token %}
+              <fieldset>
+                  <legend><h3> Rcommendation </h3></legend>
+                  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                  {% for recommend in animate.recommend_set.all %}
+                      <input type="radio" name="recommend" id="recommend{{ forloop.counter }}" value="{{ recommend.id }}">
+                      <label for="recommend{{ forloop.counter }}">{{ recommend.recommend_text }}</label><br>
+                  {% endfor %}
+            </fieldset>
+            <input type="submit" value="Vote">
+          </form>
+    </body>
+</html>

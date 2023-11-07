@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate Votes Result</title>
+</head>
+
+<body>
+
+    <h2>{{ animate.title_text }}</h2>
+
+    <ul>
+    {% for recommend in animate.recommend_set.all %}
+        <li>{{ recommend.recommend_text }} -- {{ recommend.votes }} vote{{ recommend.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'my_animation_list_app:detail' animate.id %}">Vote again?</a>
+
+    <a href="{% url 'my_animation_list_app:change_mylist_csv_to_img' %}">Export the Vote results</a>
+    <div id="chart-container-for-votes">
+        <script type="text/javascript">
+        // 获取容器元素的引用
+        const container = document.getElementById('chart-container-for-votes');
+
+        // 初始化图表
+        Highcharts.chart(container, {
+        chart: {
+            type: 'bar' // 选择图表类型，如 'line', 'bar', 'pie' 等
+        },
+        title: {
+            text: 'Chart Title'
+        },
+        // 配置数据、样式等
+        series: [{
+            name: 'Series Name',
+            data: [1, 2, 3, 4, 5] // 图表数据
+        }]
+        });
+        </script>
+    </div>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</body>
+</html>
