@@ -1,6 +1,6 @@
 # Django-Animate-List-Website   
 This is a website made with Django, and it also has a voting function.   
-This website is made using only HTML, and I'm learning about 'Bootstrap,' which can make the UI more attractive.   
+This website UI is made using only HTML, and I'm learning about 'Bootstrap,' which can make the UI more attractive.   
 - The index page lists all the animated content by their publication date. And I also have a button can download the animate list.
 ![截圖 2023-11-07 09 32 53](https://github.com/evelynchang0605/Django-Animate-List-Website/assets/137132532/c98653ba-2d3c-4ef3-9e75-53a03d1e5172)
 - The detail page has a description to introduce this animated content, and you can vote for the animated content you like.
